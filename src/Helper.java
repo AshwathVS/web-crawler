@@ -27,7 +27,7 @@ public class Helper {
     /* Regular expressions  */
     public static final Pattern link_pattern = Pattern.compile("(?i)<a([^>]+)>(.+?)</a>");
     public static final Pattern href_pattern = Pattern.compile("\\s*(?i)href\\s*=\\s*(\"([^\"]*\")|'[^']*'|([^'\">\\s]+))");
-    public static final Pattern url_pattern = Pattern.compile("/((([A-Za-z]{3,9}:(?:\\/\\/)?)(?:[-;:&=\\+\\$,\\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\\+\\$,\\w]+@)[A-Za-z0-9.-]+)((?:\\/[\\+~%\\/.\\w-_]*)?\\??(?:[-\\+=&;%@.\\w_]*)#?(?:[\\w]*))?)/");
+    public static final Pattern url_pattern = Pattern.compile("http[s]?:\\/\\/(?:w{3}?.)?([^;:'#~]+)\\.(\\w{2,3})");
 
     public static boolean isUrlValid(String url) {
         if (null == url) {
