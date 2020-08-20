@@ -31,11 +31,6 @@ public class WebAnalyser implements Runnable, WebStatistics {
 
     }
 
-    //    private void addUrlToTouchedList(String url) {
-//        int existingCount = urlsTouchedCount.get(url);
-//        urlsTouchedCount.put(url, existingCount + 1);
-//    }
-
     /**
      * find (keyword,URL) method should
      * <p>
@@ -55,16 +50,12 @@ public class WebAnalyser implements Runnable, WebStatistics {
     @Override
     public void find(String word, String URL) throws InterruptedException {
 
-        // Add to touched list (for debugging purpose to see how many threads have touched a single url)
-        // addUrlToTouchedList(URL);
-
         // Check if url has been visited
-        if (crawlDataStore.hasURLBeenVisited(URL)) {
-//            System.out.println("Already visited URL: " + URL);
-        } else {
+        if (!crawlDataStore.hasURLBeenVisited(URL)) {
+
             // adding a dummy value to the visited list
             crawlDataStore.storeOccurrenceInURL(URL, 0);
-            System.out.println("Visiting URL: " + URL);
+
             // crawling the url
             final String htmlContent = Helper.getContentFromURL(URL);
             List<String> hyperLinksInThePage = Helper.getHyperlinksFromContent(URL, htmlContent);
@@ -135,7 +126,7 @@ public class WebAnalyser implements Runnable, WebStatistics {
     public static void main(String[] args) {
         try {
             final String baseUrl = "https://www.stackoverflow.com";
-            final String keyword = "java";
+            final String keyword = "html";
             CrawlManager crawlManager = new CrawlManager(baseUrl, keyword);
             crawlManager.initiateCrawl();
 

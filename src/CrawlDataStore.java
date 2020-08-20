@@ -3,18 +3,38 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+/**
+ * Crawl data store is a class used for maintaining the list of urls to visit, storing occurrence count
+ * and other things if needed.
+ * This class will be shared across multiple threads
+ */
 public class CrawlDataStore {
 
+    /**
+     * Stores the visited urls and the occurrence count of the keyword in that particular link.
+     * 0 is stored as value if there aren't any occurrences
+     */
     private ConcurrentHashMap<String, Integer> visitedURLS = new ConcurrentHashMap<>(100);
 
+    /**
+     * This queue stores the urls to visits
+     */
     private ConcurrentLinkedQueue<String> urlsToVisit = new ConcurrentLinkedQueue<>();
 
+    /**
+     * Stores the total number of occurrences
+     */
     private Integer totalOccurrenceCount = 0;
 
     protected boolean hasURLBeenVisited(String url) {
         return visitedURLS.containsKey(url);
     }
 
+    /**
+     * Stores the occurrence count of keyword found in a url
+     * @param url
+     * @param count
+     */
     public void storeOccurrenceInURL(String url, int count) {
         this.visitedURLS.put(url, count);
         this.totalOccurrenceCount += count;

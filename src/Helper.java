@@ -7,21 +7,6 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
-/**
- * <p>
- * NOTE:
- * <p>
- * You are free to edit this class if you wish.
- * <p>
- * There are three static methods:
- * <p>
- * int countNumberOfOccurrences(String word, String text)
- * String getContentFromURL(String URLstring)
- * ArrayList<String> getHyperlinksFromContent(String URLstring, String content)
- */
-
-
 public class Helper {
 
     /* Regular expressions  */
@@ -141,7 +126,6 @@ public class Helper {
      * @return A list of internal hyperlinks on this page (same domain as URLstring)
      */
 
-
     public static ArrayList<String> getHyperlinksFromContent(String URLstring, String content) {
 
         ArrayList<String> ret = new ArrayList<String>();
@@ -205,23 +189,6 @@ public class Helper {
 
 
     public static void main(String args[]) {
-
-
-        /*
-         *
-         * Demo
-         *
-         * IMPORTANT:
-         *
-         *         Please DO NOT use any University web page
-         *         for testing as this may trigger DDoS  (Denial-of-service)  attack
-         *         alert at IT Services.
-         *
-         *         Any sample URL provided
-         *          is purely for information purposes only.
-         */
-
-
         String websiteURL = "https://www.freshworks.com/";
         String keyword = "London";
 
@@ -231,18 +198,6 @@ public class Helper {
         System.out.println(urls.toString());
 
         System.out.println("The word '" + keyword + "' appears " + Helper.countNumberOfOccurrences(keyword, content) + " time(s) on this page");
-//        System.out.println();
-//        System.out.println("Hyperlinks on this page:");
-//        System.out.println();
-//
-//        for (String link : urls) {
-//            System.out.println(link);
-//        }
-
-
-        //System.out.println(Helper.countNumberOfOccurrences("i","I love leicester"));
-        //System.out.println(Helper.countNumberOfOccurrences("Wish","I wish to wish the wish you wish to wish, but if you wish the wish the witch wishes, I won't wish the wish you wish to wish"));
-
 
     }
 
